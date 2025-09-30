@@ -1,0 +1,54 @@
+# Visualiz
+import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
+
+sns.set(style="whitegrid")
+
+pdf = PdfPages("titanic_eda_report.pdf")
+
+# Survival distribution
+plt.figure(figsize=(6,4))
+sns.countplot(x="Survived", data=train_df)
+plt.title("Survival Count")
+pdf.savefig(); plt.show()
+
+# Sex vs Survival
+plt.figure(figsize=(6,4))
+sns.countplot(x="Sex", hue="Survived", data=train_df)
+plt.title("Survival by Sex")
+pdf.savefig(); plt.show()
+
+# Pclass vs Survival
+plt.figure(figsize=(6,4))
+sns.countplot(x="Pclass", hue="Survived", data=train_df)
+plt.title("Survival by Passenger Class")
+pdf.savefig(); plt.show()
+
+# Age distribution
+plt.figure(figsize=(6,4))
+sns.histplot(train_df["Age"].dropna(), bins=30, kde=True)
+plt.title("Age Distribution")
+pdf.savefig(); plt.show()
+
+# Fare distribution
+plt.figure(figsize=(6,4))
+sns.histplot(train_df["Fare"], bins=40, kde=True)
+plt.title("Fare Distribution")
+pdf.savefig(); plt.show()
+
+# Boxplot: Age vs Pclass
+plt.figure(figsize=(6,4))
+sns.boxplot(x="Pclass", y="Age", data=train_df)
+plt.title("Age vs Pclass")
+pdf.savefig(); plt.show()
+
+# Heatmap of correlations (numeric only)
+plt.figure(figsize=(8,6))
+numeric_df = train_df.select_dtypes(include=['number'])  # only numeric cols
+sns.heatmap(numeric_df.corr(), annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation Heatmap")
+pdf.savefig(); plt.show()
+
+pdf.close()
+print("✅ Titanic EDA report saved as titanic_eda_report.pdf")
