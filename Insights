@@ -1,0 +1,28 @@
+From the Titanic dataset, 
+Correlation insights -
+
+Survived vs Sex → not directly here (Sex is categorical), but encoded version shows strong correlation (females survived more).
+Survived vs Pclass → negative correlation (~ –0.34) → higher class passengers had better survival.
+Survived vs Fare → positive correlation (~ 0.26) → wealthier passengers survived more.
+Pclass vs Fare → strong negative correlation (~ –0.55) → higher class tickets had higher fares.
+SibSp vs Parch → weak positive correlation (~ 0.41) → families tended to travel together
+Age → very weak correlation with survival (children slightly better chance
+
+More OBSERVATION -
+
+Survival Count → ~62% did not survive, 38% survived.
+Sex vs Survival → Females survived more (classic "women and children first").
+Pclass vs Survival → 1st class had highest survival, 3rd class lowest.
+Age Distribution → Most passengers were 20–40 years old.
+Boxplot Age vs Pclass → 1st class had older passengers.
+Heatmap → Fare and Pclass strongly linked to survival chances.
+
+SUMMARY - 
+
+Titanic survival was strongly influenced by Gender (females survived more).
+Passenger Class mattered: 1st class > 2nd class > 3rd class.
+Fare (proxy for wealth) correlated positively with survival.
+Age showed children (lower age) had relatively higher survival than adults.
+
+The dataset contains missing values (Age, Cabin, Embarked) that must be handled before ML.
+
